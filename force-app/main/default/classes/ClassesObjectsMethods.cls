@@ -40,19 +40,17 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<String> practiceStringMethods() {
 
-    String myString = 'Hello, Salesforce!';  // Initialize a String with 'Hello, Salesforce!
+        String myString = 'Hello, Salesforce!';  // Initialize a String with 'Hello, Salesforce!
 
-    String lengthStr = String.valueOf(myString.length()); // Get the length of the String
+        String lengthStr = String.valueOf(myString.length()); // Get the length of the String
 
-    String subStr = myString.substring(0, 5); // Get a substring of the String of the first 5 characters
+        String subStr = myString.substring(0, 5); // Get a substring of the String of the first 5 characters
 
-    String lowerStr = myString.toLowerCase();// Convert the String to lower case
+        String lowerStr = myString.toLowerCase();// Convert the String to lower case
 
-    return new List<String>{lengthStr, subStr, lowerStr};// Return the list with the string data
-    // In the first position add the string length
-    // In the second position add the substring
-    // In the third position add the string in lower case
-    // Replace null with the variable you used to store the result
+        return new List<String>{lengthStr, subStr, lowerStr};// Return the list with the string data
+        // In the first position add the string length, In the second position add the substring
+        // In the third position add the string in lower case,  Replace null with the variable you used to store the result
     }
 
     /**
@@ -63,15 +61,20 @@ public with sharing class ClassesObjectsMethods {
      * @return A list of boolean values indicating whether the string starts with 'Sales', ends with 'Force', or contains 'Awesome'.
      */
     public static List<Boolean> checkStringContent(String input) {
-        // Initialize a list to store the results
         
-        // Check if the string starts with 'Sales'
+        List<Boolean> results = new List<Boolean>(); // Initialize a list to store the results
+
+        Boolean startsWithSales = input.startsWith('Sales'); // Check if the string starts with 'Sales'
         
-        // Check if the string ends with 'Force'
+        Boolean endsWithForce = input.endsWith('Force'); // Check if the string ends with 'Force'
         
-        // Check if the string contains 'Awesome'
+        Boolean containsAwesome = input.contains('Awesome');// Check if the string contains 'Awesome'
         
-        return null; // Replace null with the variable you used to store the result
+        results.add(startsWithSales);
+        results.add(endsWithForce);
+        results.add(containsAwesome);
+
+        return results; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -82,16 +85,20 @@ public with sharing class ClassesObjectsMethods {
      * @return A string consisting of only unique words from the input sentence.
      */
     public static String removeDuplicateWords(String sentence) {
-        // Split the sentence into words
+        
+        String[] words = sentence.split('\\s+');// Split the sentence into words
 
-        // Create a set to store the unique words
+        Set<String> uniqueWords = new Set<String>();// Create a set to store the unique words
 
-        // Add each word to the set
+        for(String word: words){// Add each word to the set
+        
+        uniqueWords.add(word);
+    }
 
-        // Join the unique words back into a sentence
+        String result = String.join(uniqueWords, ' ');// Join the unique words back into a sentence
 
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -103,19 +110,22 @@ public with sharing class ClassesObjectsMethods {
      * @return The number of vowels in the string.
      */
     public static Integer countVowels(String str) {
-        // Initialize the result Integer
+        
+        Integer result = 0; // Initialize the result Integer
+        
+        
+        for (Integer i = 0; i < str.length(); i++) {
 
-        /*
-        for () {
-            // get individual characters from the string - hint use substring or split
-            // check if the character is a vowel
-            // if it is a vowel, increment the result Integer
-        }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        String letter = str.substring(i, i + 1).toLowerCase();// get individual characters from the string - hint use substring or split
+        
+        if (letter.equals('a') || letter.equals('e') || letter.equals('i') || letter.equals('o') || letter.equals('u')) { // check if the character is a vowel
+        
+        result++; // if it is a vowel, increment the result Integer
     }
-
+    }
+    return result; // Replace null with the variable you used to store the result
+    
+    }
     /**
      * Question 5
      * Given a list of scientist names, combine their names together with a comma if it contains the letter 'g'.
