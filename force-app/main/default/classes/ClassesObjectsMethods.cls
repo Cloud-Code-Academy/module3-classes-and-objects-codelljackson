@@ -110,22 +110,21 @@ public with sharing class ClassesObjectsMethods {
      * @return The number of vowels in the string.
      */
     public static Integer countVowels(String str) {
-        
+
         Integer result = 0; // Initialize the result Integer
-        
-        
+
         for (Integer i = 0; i < str.length(); i++) {
 
         String letter = str.substring(i, i + 1).toLowerCase();// get individual characters from the string - hint use substring or split
-        
+
         if (letter.equals('a') || letter.equals('e') || letter.equals('i') || letter.equals('o') || letter.equals('u')) { // check if the character is a vowel
-        
+
         result++; // if it is a vowel, increment the result Integer
     }
     }
     return result; // Replace null with the variable you used to store the result
-    
     }
+
     /**
      * Question 5
      * Given a list of scientist names, combine their names together with a comma if it contains the letter 'g'.
@@ -137,17 +136,20 @@ public with sharing class ClassesObjectsMethods {
         // The list of scientists' names
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
-        // The variable to store the concatenated string
+        String concatenatedString = '';// The variable to store the concatenated string
 
-        // Loop through the list of scientists' names
+        for (String name : scientistNames) {// Loop through the list of scientists' names
 
-            // If the name doesn't contain the letter 'G', skip this iteration
+            if (name.contains('g') || name.contains('G')){ // If the name doesn't contain the letter 'G', skip this iteration
+        
+                if (concatenatedString != ''){
 
-            // Add the name to the result string, followed by a comma
-
-        // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+                    concatenatedString = concatenatedString + ','; // Add the name to the result string, followed by a comma
+        }
+            concatenatedString = concatenatedString + name; // Remove the last comma from the result string
+        }   
+    }
+    return concatenatedString; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -159,12 +161,13 @@ public with sharing class ClassesObjectsMethods {
      * @return The absolute value of the difference
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
-        // Square the input numbers using the Math.pow() function
 
-        // Calculate the absolute difference using Math.abs() function
+        Double squareA = Math.pow(a, 2);
+        Double squareB = Math.pow(b, 2);// Square the input numbers using the Math.pow() function
 
-        // Return the result
-        return null; // Replace null with the variable you used to store the result
+        Decimal absoluteDiff = Math.abs(squareA - squareB);// Calculate the absolute difference using Math.abs() function
+        
+        return absoluteDiff; // Return the result // Replace null with the variable you used to store the result
     }
 
     /**
@@ -174,10 +177,10 @@ public with sharing class ClassesObjectsMethods {
      * @return A integer between 50 and 100.
      */
     public static Integer generateRandomNumber() {
-        // Use Math class to generate number between 50 and 100
-
+    
+        Integer randomNumber = 50 + Integer.valueof(Math.random() * 50);// Use Math class to generate number between 50 and 100
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return randomNumber; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -187,12 +190,13 @@ public with sharing class ClassesObjectsMethods {
      * @return The current date in the current user locale format.
      */
     public static String getCurrentDate() {
-        // Get the todays date
+        
+        Date today = Date.today();// Get the todays date
 
-        // Format the current date
+        String formattedDate = Date.today().format(); // Format the current date
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return formattedDate; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -202,15 +206,24 @@ public with sharing class ClassesObjectsMethods {
      * @return The number of the day of the week for the given date.
      */
     public static String getDayOfWeek(DateTime dt) {
-        // Define a map of day of the week as a key and day number as the value
-        // Monday = 1, Tuesday = 2, etc.
 
-        // Get the day name using .format('EEEE');
+        Map<String, Integer> dayOfTheWeek = new Map<String, Integer>();// Define a map of day of the week as a key and day number as the value
+        
+        dayOfTheWeek.put('Monday', 1); // Monday = 1, Tuesday = 2, etc.
+        dayOfTheWeek.put('Tuesday', 2);
+        dayOfTheWeek.put('Wednesday', 3);
+        dayOfTheWeek.put('Thursday', 4);
+        dayOfTheWeek.put('Friday', 5);
+        dayOfTheWeek.put('Saturday', 6);
+        dayOfTheWeek.put('Sunday', 7);
 
-        // Get the day number from the map using the day name
+        String dayName = dt.format('EEEE');// Get the day name using .format('EEEE');
+        System.debug('Day Name: ' + dayName);
+
+        Integer dayNumber = dayOfTheWeek.get(dayName);// Get the day number from the map using the day name 
 
         // Return the result as a string
-        return null; // Replace null with the variable you used to store the result
+        return String.valueOf(dayNumber); // Replace null with the variable you used to store the result
     }
 
 
