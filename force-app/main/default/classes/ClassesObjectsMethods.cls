@@ -218,7 +218,6 @@ public with sharing class ClassesObjectsMethods {
         dayOfTheWeek.put('Sunday', 7);
 
         String dayName = dt.format('EEEE');// Get the day name using .format('EEEE');
-        System.debug('Day Name: ' + dayName);
 
         Integer dayNumber = dayOfTheWeek.get(dayName);// Get the day number from the map using the day name 
 
@@ -238,10 +237,15 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer calculateYearDifference(Date d1, Date d2) {
 
-        // Subtract the difference in years
+    if (d1 == null || d2 == null) {
+        return null; 
+    }    
+    Integer year1 = d1.year();     
+    Integer year2 = d2.year();
 
-        return null; // Replace null with the variable you used to store the result
-    }
+    Integer yearDifference = d1.year() - d2.year(); // Subtract the difference in years
+        return Math.abs(yearDifference); // Replace null with the variable you used to store the result
+}
 
     /**
      * Question 11
