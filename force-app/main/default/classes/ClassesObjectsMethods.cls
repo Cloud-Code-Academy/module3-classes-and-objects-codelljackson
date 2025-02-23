@@ -162,8 +162,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
 
-        Double squareA = Math.pow(a, 2);
-        Double squareB = Math.pow(b, 2);// Square the input numbers using the Math.pow() function
+        Double squareA = Math.pow(a, 2);  // Square the input numbers using the Math.pow() function
+        Double squareB = Math.pow(b, 2);
 
         Decimal absoluteDiff = Math.abs(squareA - squareB);// Calculate the absolute difference using Math.abs() function
         
@@ -323,23 +323,32 @@ public with sharing class ClassesObjectsMethods {
      * where you need to manipulate and manage person information.
      */
     public class Person {
-        // Declare private two instance variables - (TEXT) name and (Number) age
         
-        // Constructor to initialize the name and age
-    
-        // Method introduceYourself that returns the details of the person        
-        // Return a string in the format "Hello, my name is <name> and I am <age> years old."
-        // For example, introduceYourself() should return a string like "Hello, my name is John Doe and I am 28 years old."
-
-        // Getter method that returns the name of the person
-
-        // Getter method that returns the age of the person
-
-        // Setter method that sets the name of the person
-
-        // Setter method that sets the age of the person
+        private String name;// Declare private two instance variables - (TEXT) name and (Number) age
+        private integer age; 
+        
+        public Person (String personName, Integer personAge) {  // Constructor to initialize the name and age  
+            name = personName; 
+            age = personAge; 
+    } 
+        public String introduceYourself() {// Method introduceYourself that returns the details of the person 
+        
+            return 'Hello, my name is ' + name + ' and I am '  + age + ' years old.';  // For example, introduceYourself() should return a string like "Hello, my name is John Doe and I am 28 years old."
     }
-
+        public String getName() { // Getter method that returns the name of the person
+            return name; 
+    }
+        public Integer getAge() {         // Getter method that returns the age of the person
+            return age; 
+    }
+        public void setName(String newName) {  // Setter method that sets the name of the person
+            name = newName;
+    }
+        public void setAge(Integer newAge) { // Setter method that sets the age of the person
+            age = newAge; 
+    }
+    }
+    
     /**
      * Question 15
      * Create a Person object and returns the details of the person.
@@ -348,19 +357,20 @@ public with sharing class ClassesObjectsMethods {
      */
 
     public static List<String> personDetails() {
-        List<String> results = new List<String>();
-        // Create a new instance of Person class
-        // Name the person 'John Doe' and set the age to 28
-
-        // Add the details of the person using the introduceYourself method
-
-        // Get the name of the person using the getter method and add it to the list
-
-        // Get the age of the person using the getter method and add it to the list
         
-        return null; // Replace null with the variable you used to store the result
-    }
+        List<String> results = new List<String>(); 
+        
+        Person thePerson = new Person('John Doe', 28);  // Create a new instance of Person class and Name the person 'John Doe' and set the age to 28
 
+        results.add(thePerson.introduceYourself());      // Add the details of the person using the introduceYourself method 
+
+        results.add(thePerson.getName());    // Get the name of the person using the getter method and add it to the list
+
+        results.add(String.valueOf(thePerson.getAge()));  // Get the age of the person using the getter method and add it to the list
+
+        return results;  // Replace null with the variable you used to store the result
+    }
+    
     /**
      * Question 16
      * Create a Person object with the provided name and age.
@@ -369,10 +379,10 @@ public with sharing class ClassesObjectsMethods {
      * @return A new instance of the Person class.
      */
     public static Person createPerson(String name, Integer age) {
-        // Create a new instance of the Person class using the provided name and age
         
-        // Return the new instance of the Person class
-        return null; // Replace null with the variable you used to store the result
+        Person myPerson = new Person (name, age);// Create a new instance of the Person class using the provided name and age
+        
+        return myPerson;   // Return the new instance of the Person class and Replace null with the variable you used to store the result
     }
 
     /**
@@ -386,14 +396,16 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Person> createMultiplePersons(List<String> names, Integer age) {
 
-        // Loop through each name in the provided list of names
-            // Create a new Person object for each name
+        List<Person> multiPerson = new List<Person>(); 
+
+        for (String name : names) { // Loop through each name in the provided list of names
             
-            // Add the new Person object to the list of Person objects
+        Person myPerson = new Person(name, age); // Create a new Person object for each name
         
-        
+        multiPerson.add(myPerson); // Add the new Person object to the list of Person objects
+        }   
         // Return the list of Person objects
-        return null; // Replace null with the variable you used to store the result
+        return multiPerson; // Replace null with the variable you used to store the result
     }
 
 
@@ -408,6 +420,13 @@ public with sharing class ClassesObjectsMethods {
      * @return The Person object of the older person.
      */
     public static Person getOlderPerson(Person person1, Person person2) {
-        return null; // Replace null with the variable you used to store the result
-    }
+
+        if (person1.getAge() > person2.getAge()) {
+            return person1; 
+    }   
+        else if (person2.getAge() > person1.getAge()) {
+            return person2; 
+    }   
+        return person1;   // Replace null with the variable you used to store the result
+}
 }
