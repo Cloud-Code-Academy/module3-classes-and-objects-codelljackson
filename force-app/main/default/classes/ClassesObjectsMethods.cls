@@ -225,7 +225,6 @@ public with sharing class ClassesObjectsMethods {
         return String.valueOf(dayNumber); // Replace null with the variable you used to store the result
     }
 
-
     /**
      * Question 10
      * Calculate the difference between the years of two dates
@@ -255,20 +254,20 @@ public with sharing class ClassesObjectsMethods {
      * where you need to manipulate and manage book information.
      */
     public class Book {
-        // Declare three public instance variables - title, author, pages
-        // title
-        // author
-        // pages
+         // Declare three public instance variables - title, author, pages
+        public String title; // title
+        public String author; // author
+        public Integer pages;// pages
     
-        // Book constructor to initialize the title and author
-        public Book() {
-            // Initialize the title and author
+    public Book(String bookTitle, String bookAuthor) {  // Book constructor to initialize the title and author
+        title = bookTitle;  // Initialize the title and author
+        author = bookAuthor;
         }
-    
-        // Method that returns the details of the book
-        public String getBookDetails() {
-            // return A string containing the details of the book in the format "Title: <title>, Author: <author>"
-            return null; // Replace null with the variable you used to store the result
+
+    public String getBookDetails() { // Method that returns the details of the book
+        
+        String bookDetails = 'Title: ' + title + ', Author: ' + author; // return A string containing the details of the book in the format "Title: <title>, Author: <author>"
+        return bookDetails; // Replace null with the variable you used to store the result
         }
     }
     
@@ -280,13 +279,13 @@ public with sharing class ClassesObjectsMethods {
      * @return A string containing the details of the book.
      */
     public static String createAndGetBookDetails() {
-        // Create a Book object with title "A Brief History of Time" and author "Stephen Hawking"
 
-        // Call the getBookDetails method on the book object to get the details of the book
+        Book myBook = new Book('A Brief History of Time','Stephen Hawking'); // Create a Book object with title "A Brief History of Time" and author "Stephen Hawking"
 
-        // Return the details of the book
-        return null; // Replace null with the variable you used to store the result
-    }
+        return mybook.getBookDetails(); // Call the getBookDetails method on the book object to get the details of the book // Return the details of the book 
+    
+        }
+        
 
     /**
      * Question 13
@@ -297,20 +296,22 @@ public with sharing class ClassesObjectsMethods {
      * @param myBook1 The first book object.
      * @return return a list of books.
      */
-    public static List<Book> generateBookList(Book myBook1) {
-        // Create a list of books
-
-        // Update the title and author of myBook1
-
-        // Update the pages for myBook1 to 352
-
-        // Create a new Book object with title "A Brief History of Time" and author "Stephen Hawking"
-
-        // Update the pages for A Brief History of Time to 256
-
-        // Add the book to the list
+    public static List<String> generateBookList(Book myBook1) { 
         
-        return null; // Replace null with the variable you used to store the result      
+        List<string> bookList = new List<String>();   // Create a list of books
+
+        myBook1.title = 'Harry Potter and the Chamber of Secrets';   // Update the title and author of myBook1
+        myBook1.author = 'J.K. Rowling';
+        myBook1.pages = 352; // Update the pages for myBook1 to 352
+
+        Book myBook2 = new book('A Brief History of Time','Stephen Hawking');  // Create a new Book object with title "A Brief History of Time" and author "Stephen Hawking"
+
+        myBook2.pages = 256; // Update the pages for A Brief History of Time to 256
+
+        bookList.add(myBook1.getBookDetails());// Add the book to the list
+        bookList.add(myBook2.getBookDetails());
+
+        return bookList; // Replace null with the variable you used to store the result      
     }
 
 
