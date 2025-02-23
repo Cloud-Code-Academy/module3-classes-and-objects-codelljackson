@@ -296,24 +296,24 @@ public with sharing class ClassesObjectsMethods {
      * @param myBook1 The first book object.
      * @return return a list of books.
      */
-    public static List<String> generateBookList(Book myBook1) { 
+    public static List<Book> generateBookList(Book myBook1) {
         
-        List<string> bookList = new List<String>();   // Create a list of books
+        List<Book> myBooks = new List<Book>();  // Create a new instance of Book class
 
-        myBook1.title = 'Harry Potter and the Chamber of Secrets';   // Update the title and author of myBook1
+        Book myBook2 = new Book('A Brief History of Time', 'Stephen Hawking');  // Create a new Book object with title "A Brief History of Time" and author "Stephen Hawking"
+
+        // Update the title and author of the book
+        myBook1.title = 'Harry Potter and the Chamber of Secrets';
         myBook1.author = 'J.K. Rowling';
-        myBook1.pages = 352; // Update the pages for myBook1 to 352
+        myBook1.pages = 352;
 
-        Book myBook2 = new book('A Brief History of Time','Stephen Hawking');  // Create a new Book object with title "A Brief History of Time" and author "Stephen Hawking"
+        myBook2.pages = 256;  // Update the pages for A Brief History of Time to 256
 
-        myBook2.pages = 256; // Update the pages for A Brief History of Time to 256
+        myBooks.add(myBook1);  // Add the book to the list
+        myBooks.add(myBook2);
 
-        bookList.add(myBook1.getBookDetails());// Add the book to the list
-        bookList.add(myBook2.getBookDetails());
-
-        return bookList; // Replace null with the variable you used to store the result      
+        return myBooks;   // Replace null with the variable you used to store the result           
     }
-
 
     /**
      * Question 14
